@@ -8,11 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: build
         run: |
-          docker build . -t ${{ secrets.6flic3}}/${{ secrets.flic}}:latest
+          docker build . -t ${{ secrets.DOCKERHUB_USERNAME}}/${{ secrets.DOCKERHUB_NAME}}:latest
       - name: publish
         run: |
-          docker login -u ${{ secrets.6flic3}} -p ${{ secrets.dckr_pat_arOKN9wxHyg4knwK0_W1cmsVSZI}}
-          docker push ${{ secrets.6flic3}}/${{ secrets.flic}}:latest
+          docker login -u ${{ secrets.DOCKERHUB_USERNAME}} -p ${{ secrets.DOCKERHUB_TOKEN}}
+          docker push ${{ secrets.DOCKERHUB_USERNAME}}/${{ secrets.DOCKERHUB_NAME}}:latest
